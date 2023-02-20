@@ -12,6 +12,7 @@ const erroresGlobales = require('../controllers/errorController');
 //Importamos nuestras rutas
 const asignaturaRoutes = require('../routes/asignaturaRoutes');
 const alumnoRoutes = require('../routes/alumnoRoutes');
+const profesorRoutes = require('../routes/profesorRoutes');
 
 //Importamos el modulo que nos va a permitir si hay demasiadas solicitudes de una op bloquear las solicitudes
 const  rateLimit = require('express-rate-limit')
@@ -100,6 +101,7 @@ app.use(express.static(`${__dirname}/../public/cliente`))
 //Usamos el midelware de usuarios
 app.use('/api/v1/asignatura',asignaturaRoutes);
 app.use('/api/v1/alumno',alumnoRoutes);
+app.use('/api/v1/profesor',profesorRoutes);
 
 //Controlador para le manejo de errores de rutas(si no encuentra una ruta le mandara una respuesta)
 app.all('*',(req,res,next)=>{
