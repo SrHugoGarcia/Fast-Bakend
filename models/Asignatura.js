@@ -15,7 +15,25 @@ const asignaturaSchema =  new mongoose.Schema({
     horas:{
         type: Number,
         required:[true, "Una asignatura debe de tener horas"]
-    }
+    },
+    alumnos:[
+        {
+        type: mongoose.Schema.ObjectId,
+        ref: "alumno"
+        }    
+    ],
+    profesor:{
+        type: mongoose.Schema.ObjectId,
+        ref: "Profesor"
+    }    
+})
+
+
+asignaturaSchema.pre(/^find/,  function(next){
+    this.populate({
+        path:"profesor"
+    })
+    next()
 })
 const Asignatura = mongoose.model("asignatura", asignaturaSchema);
-module.exports = Asignatura
+module.exports = Asignatura 
