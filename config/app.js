@@ -13,6 +13,7 @@ const erroresGlobales = require('../controllers/errorController');
 const asignaturaRoutes = require('../routes/asignaturaRoutes');
 const alumnoRoutes = require('../routes/alumnoRoutes');
 const profesorRoutes = require('../routes/profesorRoutes');
+const celularRoutes = require('../routes/celularRoutes');
 
 //Importamos el modulo que nos va a permitir si hay demasiadas solicitudes de una op bloquear las solicitudes
 const  rateLimit = require('express-rate-limit')
@@ -80,7 +81,7 @@ app.use((req,res,next) =>{
     next();
 })
 app.use(express.static(`${__dirname}/../public/servidor`))
-
+/*
 const whileList = ['http://127.0.0.1:3000',process.env.FRONTEND_URL];
 const corsOptions = {
     origin: function (origin, callback) {
@@ -94,7 +95,7 @@ const corsOptions = {
   }
   ///img/cursos/
   //
-app.use(cors(corsOptions)) 
+app.use(cors(corsOptions)) */
 app.use(express.static(`${__dirname}/../public/cliente`))
 //app.use(express.static(`${__dirname}/../public/img/cursos`))
 //////////////////////RUTAS////////////////////////
@@ -102,6 +103,7 @@ app.use(express.static(`${__dirname}/../public/cliente`))
 app.use('/api/v1/asignatura',asignaturaRoutes);
 app.use('/api/v1/alumno',alumnoRoutes);
 app.use('/api/v1/profesor',profesorRoutes);
+app.use('/api/v1/celular',celularRoutes);
 
 //Controlador para le manejo de errores de rutas(si no encuentra una ruta le mandara una respuesta)
 app.all('*',(req,res,next)=>{
