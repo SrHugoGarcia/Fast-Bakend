@@ -81,7 +81,7 @@ app.use((req,res,next) =>{
     next();
 })
 app.use(express.static(`${__dirname}/../public/servidor`))
-/*
+
 const whileList = ['http://127.0.0.1:3000',process.env.FRONTEND_URL];
 const corsOptions = {
     origin: function (origin, callback) {
@@ -95,7 +95,7 @@ const corsOptions = {
   }
   ///img/cursos/
   //
-app.use(cors(corsOptions)) */
+app.use(cors(corsOptions)) 
 app.use(express.static(`${__dirname}/../public/cliente`))
 //app.use(express.static(`${__dirname}/../public/img/cursos`))
 //////////////////////RUTAS////////////////////////
